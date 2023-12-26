@@ -54,6 +54,30 @@ class OktaAdmin{
             'okta-sign-in-widget',
             'okta-sign-in-widget-options-section'
         );
+
+        register_setting('okta-sign-in-widget', 'okta-auto-redirect-login', array(
+            'type' => 'boolean',
+            'show_in_rest' => false,
+        ));
+        add_settings_field(
+            'okta-auto-redirect-login',
+            'Automatically Redirect to Okta for Login',
+            function() { $this->optionsPageCheckboxInputAction('okta-auto-redirect-login', 'checkbox', 'Check this to have Unauthenticated Users Authorize into Okta Automatically if A Okta Session is Detected'); },
+            'okta-sign-in-widget',
+            'okta-sign-in-widget-options-section'
+        );
+
+        register_setting('okta-sign-in-widget', 'okta-debug-log', array(
+            'type' => 'boolean',
+            'show_in_rest' => false,
+        ));
+        add_settings_field(
+            'okta-debug-log',
+            'Log Okta Plugin Debug Messages to Browser Console',
+            function() { $this->optionsPageCheckboxInputAction('okta-debug-log', 'checkbox', 'Logs Okta WordPress Plugin Debug Messages to the Browser Console'); },
+            'okta-sign-in-widget',
+            'okta-sign-in-widget-options-section'
+        );
     }
 
     public function optionsMenuAction() {

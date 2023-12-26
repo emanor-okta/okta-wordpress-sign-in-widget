@@ -19,6 +19,13 @@ If you would like to use an officially supported Okta WordPress integration, ple
 
 ## Setup Instructions
 
+# This is a Modified Version that uses the Okta Redirect Model for login instead of a self hosted Widget.
+
+The install instructions below are still the same. A new docker compose file is added (`compose.yaml`) which uses a later version of MySql and was used for testing.
+Two new Admin Options have been added in addtion to the the original options from the blog post:
+* `okta-auto-redirect-login` - If a Okta user session is not detected users will be automatically redirected to Okta to authenticate. Setting this to false allows user to login via Wordpress in addtion to Okta. If a Okta session is detected the user will always be redirect to Okta regardless of this setting.
+* `okta-debug-log` - Adds debug statements to the browser dev console 
+
 After dropping this folder into the WordPress plugins folder and activating the plugin, you should see a new Settings menu where you can configure your Okta settings to enable the plugin.
 
 Make sure your admin user in WordPress has an email address that matches an Okta user, or enable native WordPress logins, otherwise you'll be locked out of your WordPress after configuring the plugin.
